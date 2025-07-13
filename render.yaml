@@ -1,15 +1,16 @@
 services:
   - type: web
-    name: webtienganh-backend
+    name: englishweb-promax
     env: python
     buildCommand: |
       pip install -r requirements.txt
       cd front_end
       npm install
       npm run build
-    startCommand: gunicorn webtienganh.wsgi:application --bind 0.0.0.0:$PORT
+      cd ..
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn webtienganh.wsgi:application
+    staticPublishPath: staticfiles
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: webtienganh.settings
-      - key: PYTHON_VERSION
-        value: 3.10
