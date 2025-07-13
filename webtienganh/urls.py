@@ -14,4 +14,5 @@ urlpatterns = [
 
     # Trả về index.html cho các route frontend
     re_path(r'^.*$', FrontendAppView.as_view()),  # ← dòng này sẽ xử lý mọi route còn lại
+    
 ]
